@@ -2,4 +2,4 @@
 
 # Chahed Mazouz
 
-- node exercice-0.js
+- node exercice-01.js
