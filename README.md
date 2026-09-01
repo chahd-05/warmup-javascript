@@ -1,5 +1,5 @@
 # warmup-javascript
 
-- Chahed Mazouz
+# Chahed Mazouz
 
-1. node exercice-0.js
+- node exercice-0.js
