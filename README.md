@@ -2,4 +2,4 @@
 
 - Chahed Mazouz
 
-1. node exercice-01.js 
+1. node exercice-0.js
