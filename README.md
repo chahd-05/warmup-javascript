@@ -1,4 +1,4 @@
-# CHAHDED MAZOUZ
+# CHAHED MAZOUZ
 # Warm-Up JavaScript
 
 ## Description
