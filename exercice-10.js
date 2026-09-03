@@ -12,3 +12,14 @@ console.log(total)
 
 const find = ventes.reduce((a, b) => b.montant > a.montant ? b : a)
 console.log(find)
+
+function caParVendeur(ventes){
+    return ventes.reduce(function(a, b) {
+        if(!a[b.vendeur]){
+            a[b.vendeur] = 0
+        }
+        a[b.vendeur] += b.montant
+        return a
+    }, {})
+}
+console.log(caParVendeur(ventes))
