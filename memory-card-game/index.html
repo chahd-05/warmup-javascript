@@ -1,11 +1,50 @@
-<html lang="en">
+<!DOCTYPE html>
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=
-    , initial-scale=1.0">
-    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Memory Card Game</title>
+
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-    
+
+    <main class="game-container">
+
+        <header class="game-header">
+            <h1>Memory Card Game</h1>
+            <p>Find all the matching pairs!</p>
+        </header>
+
+        <section class="game-stats">
+
+            <div class="stat">
+                <span class="stat-label">blows</span>
+                <span id="moves" class="stat-value">0</span>
+            </div>
+
+            <div class="stat">
+                <span class="stat-label">Pairs</span>
+                <span id="pairs" class="stat-value">0 / 6</span>
+            </div>
+
+        </section>
+
+        <section id="game-board" class="game-board">
+        </section>
+
+        <p id="victory-message" class="victory-message hidden">
+            well done
+        </p>
+
+        <button id="restart-button" class="restart-button">
+            restart
+        </button>
+
+    </main>
+
+    <script src="script.js"></script>
 </body>
 </html>
