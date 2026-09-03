@@ -23,3 +23,11 @@ function caParVendeur(ventes){
     }, {})
 }
 console.log(caParVendeur(ventes))
+
+
+const avg = ventes.reduce((a, b) => a + b.montant, 0)
+
+const moy = avg / 3
+
+console.log(moy)
+
