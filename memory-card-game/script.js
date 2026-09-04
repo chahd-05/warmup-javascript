@@ -50,6 +50,8 @@ cards.forEach((cardData) => {
         card.classList.remove("hidden")
         card.classList.add("visible")
     })
+
 })
+
 
 
