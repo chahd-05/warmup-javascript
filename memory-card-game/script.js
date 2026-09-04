@@ -30,13 +30,13 @@ const cards = [
         image: "assets/images/bee.png"
     }
 ];
-
+const gameCards = [...cards, ...cards]
 const gameBoard = document.querySelector("#game-board")
 
-cards.sort(() => Math.random() - 0.5)
+gameCards.sort(() => Math.random() - 0.5)
 let selectedCards = []
 
-cards.forEach((cardData) => {
+gameCards.forEach((cardData) => {
     const card = document.createElement("div")
     card.classList.add("card", "hidden")
     gameBoard.appendChild(card)
@@ -64,6 +64,9 @@ cards.forEach((cardData) => {
 
             if(firstCard.dataset.name === secondCard.dataset.name){
                 console.log("match")
+
+                firstCard.classList.add("found")
+                secondCard.classList.add("found")
             }else {
                 console.log("not a match")
             }
