@@ -31,3 +31,14 @@ const cards = [
     }
 ];
 console.log(cards)
+
+
+const gameBoard = document.querySelector("#game-board")
+console.log(gameBoard)
+
+const card = document.createElement("div")
+console.log(card)
+
+card.classList.add("card", "hidden")
+
+gameBoard.appendChild(card)
