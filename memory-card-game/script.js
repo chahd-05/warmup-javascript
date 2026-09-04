@@ -34,6 +34,7 @@ const cards = [
 const gameBoard = document.querySelector("#game-board")
 
 cards.sort(() => Math.random() - 0.5)
+let selectedCards = []
 
 cards.forEach((cardData) => {
     const card = document.createElement("div")
@@ -46,9 +47,16 @@ cards.forEach((cardData) => {
     image.alt = cardData.name
     card.appendChild(image)
 
+    
     card.addEventListener("click", () => {
+        if(selectedCards.length >= 2){
+            return;
+        }
+
         card.classList.remove("hidden")
         card.classList.add("visible")
+
+        selectedCards.push("card")
     })
 
 })
