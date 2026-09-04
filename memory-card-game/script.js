@@ -11,8 +11,8 @@ const cards = [
     },
     {
         id: 3,
-        name: "lion",
-        image: "assets/images/lion.png"
+        name: "dolphin",
+        image: "assets/images/dolphin.png"
     },
     {
         id: 4,
@@ -21,17 +21,15 @@ const cards = [
     },
     {
         id: 5,
-        name: "tiger",
-        image: "assets/images/tiger.png"
+        name: "panda",
+        image: "assets/images/panda.png"
     },
     {
         id: 6,
-        name: "panda",
-        image: "assets/images/panda.png"
+        name: "bee",
+        image: "assets/images/bee.png"
     }
 ];
-console.log(cards)
-
 
 const gameBoard = document.querySelector("#game-board")
 
@@ -42,7 +40,7 @@ cards.forEach((cardData) => {
 
     const image = document.createElement("img")
 
-    image.scr = cardData.image
+    image.src = cardData.image
     image.alt = cardData.name
     card.appendChild(image)
 })

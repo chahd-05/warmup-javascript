@@ -83,6 +83,10 @@ body {
     color: white;
 }
 
+.card.hidden img {
+    display: none;
+}
+
 .card.visible {
     background-color: white;
     display: flex;
@@ -106,7 +110,6 @@ body {
 .card:not(.found):hover {
     transform: scale(1.03);
 }
-
 
 .victory-message {
     text-align: center;
@@ -136,7 +139,6 @@ body {
 }
 
 @media (max-width: 700px) {
-
     .game-board {
         grid-template-columns: repeat(3, 1fr);
     }
@@ -147,7 +149,6 @@ body {
 }
 
 @media (max-width: 450px) {
-
     .game-container {
         width: 95%;
         margin: 25px auto;
