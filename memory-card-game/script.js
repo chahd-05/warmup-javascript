@@ -34,11 +34,15 @@ console.log(cards)
 
 
 const gameBoard = document.querySelector("#game-board")
-console.log(gameBoard)
-
 
 cards.forEach((cardData) => {
     const card = document.createElement("div")
     card.classList.add("card", "hidden")
     gameBoard.appendChild(card)
+
+    const image = document.createElement("img")
+
+    image.scr = cardData.image
+    image.alt = cardData.name
+    card.appendChild(image)
 })
