@@ -43,4 +43,9 @@ cards.forEach((cardData) => {
     image.src = cardData.image
     image.alt = cardData.name
     card.appendChild(image)
+
+    card.addEventListener("click", () => {
+        card.classList.remove("hidden")
+        card.classList.add("visible")
+    })
 })
