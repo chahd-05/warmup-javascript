@@ -57,9 +57,20 @@ cards.forEach((cardData) => {
         card.classList.add("visible")
 
         selectedCards.push(card)
+
+        if(selectedCards.length === 2){
+            const firstCard = selectedCards[0]
+            const secondCard = selectedCards[1]
+
+            if(firstCard.dataset.name === secondCard.dataset.name){
+                console.log("match")
+            }else {
+                console.log("not a match")
+            }
+        }
+        
         console.log(selectedCards);
         
-
         card.dataset.name = cardData.name
     })
     console.log(card);
