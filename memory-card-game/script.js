@@ -30,58 +30,67 @@ const cards = [
         image: "assets/images/bee.png"
     }
 ];
-const gameCards = [...cards, ...cards]
-const gameBoard = document.querySelector("#game-board")
 
-gameCards.sort(() => Math.random() - 0.5)
-let selectedCards = []
+const gameCards = [...cards, ...cards];
+
+const gameBoard = document.querySelector("#game-board");
+
+gameCards.sort(() => Math.random() - 0.5);
+
+let selectedCards = [];
 
 gameCards.forEach((cardData) => {
-    const card = document.createElement("div")
-    card.classList.add("card", "hidden")
-    gameBoard.appendChild(card)
 
-    const image = document.createElement("img")
+    const card = document.createElement("div");
 
-    image.src = cardData.image
-    image.alt = cardData.name
-    card.appendChild(image)
+    card.classList.add("card", "hidden");
 
-    
+    gameBoard.appendChild(card);
+
+    const image = document.createElement("img");
+
+    image.src = cardData.image;
+    image.alt = cardData.name;
+
+    card.appendChild(image);
+
+    card.dataset.name = cardData.name;
+
     card.addEventListener("click", () => {
-        if(selectedCards.length >= 2){
+
+        if (selectedCards.length >= 2) {
             return;
         }
 
-        card.classList.remove("hidden")
-        card.classList.add("visible")
+        card.classList.remove("hidden");
+        card.classList.add("visible");
 
-        selectedCards.push(card)
+        selectedCards.push(card);
 
-        if(selectedCards.length === 2){
-            const firstCard = selectedCards[0]
-            const secondCard = selectedCards[1]
+        if (selectedCards.length === 2) {
 
-            if(firstCard.dataset.name === secondCard.dataset.name){
-                console.log("match")
+            const firstCard = selectedCards[0];
+            const secondCard = selectedCards[1];
 
-                firstCard.classList.add("found")
-                secondCard.classList.add("found")
-            }else {
-                console.log("not a match")
+            if (firstCard.dataset.name === secondCard.dataset.name) {
+
+                console.log("match");
+
+                firstCard.classList.add("found");
+                secondCard.classList.add("found");
+
+                selectedCards = [];
+
+            } else {
+
+                console.log("not a match");
+
             }
         }
-        
+
         console.log(selectedCards);
-        
-        card.dataset.name = cardData.name
-    })
+
+    });
+
     console.log(card);
-    
-
-    
-
-})
-
-
-
+});
