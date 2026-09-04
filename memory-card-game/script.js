@@ -42,3 +42,9 @@ console.log(card)
 card.classList.add("card", "hidden")
 
 gameBoard.appendChild(card)
+
+cards.forEach((cardData) => {
+    const card = document.createElement("div")
+    card.classList.add("card", "hidden")
+    gameBoard.appendChild(card)
+})
