@@ -56,8 +56,16 @@ cards.forEach((cardData) => {
         card.classList.remove("hidden")
         card.classList.add("visible")
 
-        selectedCards.push("card")
+        selectedCards.push(card)
+        console.log(selectedCards);
+        
+
+        card.dataset.name = cardData.name
     })
+    console.log(card);
+    
+
+    
 
 })
 
