@@ -34,117 +34,150 @@ const cards = [
 const gameCards = [...cards, ...cards];
 
 const gameBoard = document.querySelector("#game-board");
+const victoryMessage = document.querySelector("#victory-message");
+const pairsDisplay = document.querySelector("#pairs");
+const restartButton = document.querySelector("#restart-button");
+const movesDisplay = document.querySelector("#moves")
 
-const victoryMessage = document.querySelector("#victory-message")
+let selectedCards = [];
+let foundPairs = 0;
+let moves = 0
 
-const pairsDisplay = document.querySelector("#pairs")
 
-const restartButton = document.querySelector("#restart-button")
+function createCards() {
+
+    gameCards.forEach((cardData) => {
+
+        const card = document.createElement("div");
+
+        card.classList.add("card", "hidden");
+
+        gameBoard.appendChild(card);
+
+
+        const image = document.createElement("img");
+
+        image.src = cardData.image;
+        image.alt = cardData.name;
+
+        card.appendChild(image);
+
+
+        card.dataset.name = cardData.name;
+
+
+        card.addEventListener("click", () => {
+
+            if (card.classList.contains("visible")) {
+                return;
+            }
+
+            if (selectedCards.length >= 2) {
+                return;
+            }
+
+            if (selectedCards.includes(card)) {
+                return;
+            }
+
+
+            card.classList.remove("hidden");
+            card.classList.add("visible");
+
+            selectedCards.push(card);
+
+
+            if (selectedCards.length === 2) {
+
+                moves++
+                movesDisplay.textContent = moves
+
+                const firstCard = selectedCards[0];
+                const secondCard = selectedCards[1];
+
+
+                if (firstCard.dataset.name === secondCard.dataset.name) {
+
+                    console.log("match");
+
+                    firstCard.classList.add("found");
+                    secondCard.classList.add("found");
+
+                    foundPairs++;
+
+                    pairsDisplay.textContent = `${foundPairs} / ${cards.length}`;
+
+
+                    if (foundPairs === cards.length) {
+
+                        victoryMessage.classList.remove("hidden");
+
+                    }
+
+
+                    selectedCards = [];
+
+                } else {
+
+                    console.log("not a match");
+
+                    setTimeout(() => {
+
+                        firstCard.classList.remove("visible");
+                        firstCard.classList.add("hidden");
+
+                        secondCard.classList.remove("visible");
+                        secondCard.classList.add("hidden");
+
+                        selectedCards = [];
+
+                    }, 1000);
+
+                }
+            }
+
+        });
+
+    });
+
+}
 
 
 gameCards.sort(() => Math.random() - 0.5);
 
-let selectedCards = []; 
 
-let foundPairs = 0;
+createCards();
 
-gameCards.forEach((cardData) => {
+restartButton.addEventListener("click", () => {
 
-    const card = document.createElement("div");
+    moves = 0
+    movesDisplay.textContent = "0"
 
-    card.classList.add("card", "hidden");
+    foundPairs = 0;
 
-    gameBoard.appendChild(card);
+    pairsDisplay.textContent = `0 / ${cards.length}`;
 
-    const image = document.createElement("img");
+    selectedCards = [];
 
-    image.src = cardData.image;
-    image.alt = cardData.name;
+    victoryMessage.classList.add("hidden");
 
-    card.appendChild(image);
+    gameBoard.innerHTML = ""
 
-    card.dataset.name = cardData.name;
+    gameCards.sort(() => Math.random() - 0.5)
 
-    card.addEventListener("click", () => {
 
-        if(card.classList.contains("visible")){
-            return
-        }
+    const allCards = document.querySelectorAll(".card");
 
-        if (selectedCards.length >= 2) {
-            return;
-        }
+    allCards.forEach((card) => {
 
-        if(selectedCards.includes(card)){
-            return
-        }
+        card.classList.remove("visible");
+        card.classList.remove("found");
 
-        card.classList.remove("hidden");
-        card.classList.add("visible");
-
-        selectedCards.push(card);
-
-        if (selectedCards.length === 2) {
-
-            const firstCard = selectedCards[0];
-            const secondCard = selectedCards[1];
-
-            if (firstCard.dataset.name === secondCard.dataset.name) {
-
-                console.log("match");
-
-                firstCard.classList.add("found");
-                secondCard.classList.add("found");
-
-                foundPairs++;
-                pairsDisplay.textContent = `${foundPairs} / ${cards.length}`
-                
-                if(foundPairs === cards.length){
-                    victoryMessage.classList.remove("hidden")
-                }
-                
-
-                selectedCards = [];
-
-            } else {
-
-                console.log("not a match");
-
-                setTimeout(() => {
-                    firstCard.classList.remove("visible")
-                    firstCard.classList.add("hidden")
-
-                    secondCard.classList.remove("visible")
-                    secondCard.classList.add("hidden")
-
-                    selectedCards = [];
-
-                }, 1000);
-
-            }
-        }
-
-        console.log(selectedCards);
-
-        restartButton.addEventListener("click", () => {
-            foundPairs = 0
-
-            pairsDisplay.textContent = `0 / ${cards.length}`
-
-            selectedCards = []
-
-            victoryMessage.classList.add("hidden")
-
-            const allcards =  document.querySelectorAll(".card")
-            allcards.forEach((card) => {
-                card.classList.remove("visible")
-                card.classList.remove("found")
-                card.classList.add("hidden")
-            })
-            console.log("restart")
-        })
+        card.classList.add("hidden");
 
     });
 
-    console.log(card);
+createCards()
+    console.log("restart");
+
 });
