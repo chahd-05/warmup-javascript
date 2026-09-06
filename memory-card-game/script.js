@@ -35,6 +35,11 @@ const gameCards = [...cards, ...cards];
 
 const gameBoard = document.querySelector("#game-board");
 
+const victoryMessage = document.querySelector("#victory-message")
+
+const pairsDisplay = document.querySelector("#pairs")
+
+
 gameCards.sort(() => Math.random() - 0.5);
 
 let selectedCards = []; 
@@ -90,7 +95,11 @@ gameCards.forEach((cardData) => {
                 secondCard.classList.add("found");
 
                 foundPairs++;
-                console.log("found pairs", foundPairs);
+                pairsDisplay.textContent = `${foundPairs} / ${cards.length}`
+                
+                if(foundPairs === cards.length){
+                    victoryMessage.classList.remove("hidden")
+                }
                 
 
                 selectedCards = [];
