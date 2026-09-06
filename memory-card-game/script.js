@@ -37,9 +37,9 @@ const gameBoard = document.querySelector("#game-board");
 
 gameCards.sort(() => Math.random() - 0.5);
 
-let selectedCards = [];
+let selectedCards = []; 
 
-let isChecking = false; 
+let foundPairs = 0;
 
 gameCards.forEach((cardData) => {
 
@@ -60,7 +60,7 @@ gameCards.forEach((cardData) => {
 
     card.addEventListener("click", () => {
 
-        if(isChecking){
+        if(card.classList.contains("visible")){
             return
         }
 
@@ -89,8 +89,11 @@ gameCards.forEach((cardData) => {
                 firstCard.classList.add("found");
                 secondCard.classList.add("found");
 
+                foundPairs++;
+                console.log("found pairs", foundPairs);
+                
+
                 selectedCards = [];
-                isChecking = false;
 
             } else {
 
@@ -104,7 +107,6 @@ gameCards.forEach((cardData) => {
                     secondCard.classList.add("hidden")
 
                     selectedCards = [];
-                    isChecking = false;
 
                 }, 1000);
 
