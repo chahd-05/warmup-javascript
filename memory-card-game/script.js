@@ -85,6 +85,17 @@ gameCards.forEach((cardData) => {
 
                 console.log("not a match");
 
+                setTimeout(() => {
+                    firstCard.classList.remove("visible")
+                    firstCard.classList.add("hidden")
+
+                    secondCard.classList.remove("visible")
+                    secondCard.classList.add("hidden")
+
+                    selectedCards = []
+                    
+                }, 1000);
+
             }
         }
 
