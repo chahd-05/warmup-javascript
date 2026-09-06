@@ -39,6 +39,8 @@ gameCards.sort(() => Math.random() - 0.5);
 
 let selectedCards = [];
 
+let isChecking = false; 
+
 gameCards.forEach((cardData) => {
 
     const card = document.createElement("div");
@@ -58,9 +60,14 @@ gameCards.forEach((cardData) => {
 
     card.addEventListener("click", () => {
 
+        if(isChecking){
+            return
+        }
+
         if (selectedCards.length >= 2) {
             return;
         }
+
         if(selectedCards.includes(card)){
             return
         }
@@ -83,6 +90,7 @@ gameCards.forEach((cardData) => {
                 secondCard.classList.add("found");
 
                 selectedCards = [];
+                isChecking = false;
 
             } else {
 
@@ -95,7 +103,8 @@ gameCards.forEach((cardData) => {
                     secondCard.classList.remove("visible")
                     secondCard.classList.add("hidden")
 
-                    selectedCards = []
+                    selectedCards = [];
+                    isChecking = false;
 
                 }, 1000);
 
