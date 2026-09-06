@@ -61,6 +61,9 @@ gameCards.forEach((cardData) => {
         if (selectedCards.length >= 2) {
             return;
         }
+        if(selectedCards.includes(card)){
+            return
+        }
 
         card.classList.remove("hidden");
         card.classList.add("visible");
@@ -93,7 +96,7 @@ gameCards.forEach((cardData) => {
                     secondCard.classList.add("hidden")
 
                     selectedCards = []
-                    
+
                 }, 1000);
 
             }
