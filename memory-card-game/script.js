@@ -39,6 +39,8 @@ const victoryMessage = document.querySelector("#victory-message")
 
 const pairsDisplay = document.querySelector("#pairs")
 
+const restartButton = document.querySelector("#restart-button")
+
 
 gameCards.sort(() => Math.random() - 0.5);
 
@@ -123,6 +125,24 @@ gameCards.forEach((cardData) => {
         }
 
         console.log(selectedCards);
+
+        restartButton.addEventListener("click", () => {
+            foundPairs = 0
+
+            pairsDisplay.textContent = `0 / ${cards.length}`
+
+            selectedCards = []
+
+            victoryMessage.classList.add("hidden")
+
+            const allcards =  document.querySelectorAll(".card")
+            allcards.forEach((card) => {
+                card.classList.remove("visible")
+                card.classList.remove("found")
+                card.classList.add("hidden")
+            })
+            console.log("restart")
+        })
 
     });
 
